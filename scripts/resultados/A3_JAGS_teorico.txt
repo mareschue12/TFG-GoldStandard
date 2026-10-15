@@ -1,1 +1,28 @@
+> # Resumen de estimaciones (mediana, desv. tipica) e intervalos de credibilidad del 95%
+> summary(muestras_post)
 
+Iterations = 6001:56000
+Thinning interval = 1 
+Number of chains = 3 
+Sample size per chain = 50000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+        Mean      SD  Naive SE Time-series SE
+Se[1] 0.8659 0.02419 6.246e-05      0.0001845
+Se[2] 0.8177 0.04647 1.200e-04      0.0004647
+Sp[1] 0.7464 0.02347 6.059e-05      0.0002182
+Sp[2] 0.9658 0.01599 4.128e-05      0.0001262
+p[1]  0.5351 0.03490 9.012e-05      0.0003517
+p[2]  0.2075 0.02527 6.524e-05      0.0002365
+
+2. Quantiles for each variable:
+
+        2.5%    25%    50%    75%  97.5%
+Se[1] 0.8199 0.8492 0.8655 0.8821 0.9140
+Se[2] 0.7324 0.7859 0.8154 0.8473 0.9165
+Sp[1] 0.7008 0.7305 0.7462 0.7620 0.7932
+Sp[2] 0.9329 0.9551 0.9663 0.9773 0.9950
+p[1]  0.4644 0.5120 0.5360 0.5590 0.6015
+p[2]  0.1608 0.1899 0.2065 0.2240 0.2595
