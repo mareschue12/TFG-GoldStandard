@@ -1,1 +1,23 @@
+> summary(punto_optimo) # Tabla resumen con el umbral M y metricas resultantes
 
+Call:
+optimal.cutpoints.default(X = "marcador", status = "estado", 
+    tag.healthy = "Sano", methods = "MCT", data = datos_clinicos, 
+    control = control.cutpoints(CFP = coste_fp, CFN = coste_fn))
+
+Area under the ROC curve (AUC):  0.943 (0.932, 0.955) 
+
+CRITERION: MCT
+Number of optimal cutoffs: 1
+
+                     Estimate
+cutoff              7.6339043
+Se                  0.9310000
+Sp                  0.7510000
+PPV                 0.7889831
+NPV                 0.9158537
+DLR.Positive        3.7389558
+DLR.Negative        0.0918775
+FP                249.0000000
+FN                 69.0000000
+Optimal criterion   0.4695000
