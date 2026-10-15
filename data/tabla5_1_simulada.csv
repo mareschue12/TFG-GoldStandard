@@ -1,3 +1,3 @@
-poblacion,T1pos_T2pos,T1pos_T2neg,T1neg_T2pos,T1neg_T2neg
+poblacion,T1+_T2+,T1+_T2-,T1-_T2+,T1-_T2-
 Poblacion_1,384,199,70,347
 Poblacion_2,152,227,42,579
