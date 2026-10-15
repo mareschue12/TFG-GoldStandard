@@ -1,4 +1,3 @@
-install.packages("poLCA")
 library(poLCA)               # Paquete para el analisis de clases latentes por EM
 
 set.seed(123)                # Aseguramos la replicabilidad de la simulacion
