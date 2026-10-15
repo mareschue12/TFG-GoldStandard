@@ -1,1 +1,33 @@
+> # Visualizamos la tabla de verificación (opcional, útil para el informe)
+> view_table(data = datos_pvb, test = "T", disease = "D",
++            show_unverified = TRUE, show_total = TRUE)
+     Disease
+Test  yes  no unverified Total
+  yes 244 184         48   476
+  no    6 119        399   524
+> # 1) Corrección por el metodo de Begg y Greenes extendido (EBG):
+> # requiere bootstrap para el IC, por eso se fija semilla y número de réplicas
+> resultado_ebg <- acc_ebg(data = datos_pvb, test = "T", disease = "D",
++                          ci = TRUE, ci_type = "bca",
++                          seednum = 123, R = 999)
+Estimates of accuracy measures
+Corrected for PVB: Extended Begg and Greenes' Method
 
+> resultado_ebg$acc_results
+          Est         SE     LowCI     UppCI
+Sn  0.9151750 0.03074711 0.8312314 0.9594364
+Sp  0.7091111 0.01276250 0.6864777 0.7359780
+PPV 0.5700935 0.02457229 0.5259624 0.6217027
+NPV 0.9520000 0.01898563 0.8955376 0.9777137
+> # 2) Corrección mediante Imputación Múltiple (MI):
+> resultado_mi <- acc_mi(data = datos_pvb, test = "T", disease = "D",
++                        ci = TRUE, seednum = 123, m = 10)
+Estimates of accuracy measures
+Corrected for PVB: Multiple Imputation Method
+
+> resultado_mi$acc_results
+          Est         SE     LowCI     UppCI
+Sn  0.9065156 0.02800715 0.8484205 0.9646107
+Sp  0.7066349 0.01762564 0.6720781 0.7411918
+PPV 0.5674370 0.02330377 0.5217467 0.6131272
+NPV 0.9465649 0.01701210 0.9111006 0.9820292
