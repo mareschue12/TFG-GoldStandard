@@ -1,1 +1,95 @@
+> modelo <- poLCA(cbind(T1, T2, T3) ~ 1, data = datos,
++                 nclass = 2, maxiter = 1000, tol = 1e-7, nrep = 10)
+# Los 10 reinicios del EM convergen al mismo maximo: llik = -3018.629
+Conditional item response (column) probabilities,
+ by outcome variable, for each class (row) 
+ 
+$T1
+           Pr(1)  Pr(2)
+class 1:  0.9556 0.0444
+class 2:  0.1595 0.8405
 
+$T2
+           Pr(1)  Pr(2)
+class 1:  0.9140 0.0860
+class 2:  0.1396 0.8604
+
+$T3
+           Pr(1)  Pr(2)
+class 1:  0.8729 0.1271
+class 2:  0.2069 0.7931
+
+Estimated class population shares 
+ 0.6946 0.3054 
+ 
+Predicted class memberships (by modal posterior prob.) 
+ 0.704 0.296 
+ 
+========================================================= 
+Fit for 2 latent classes: 
+========================================================= 
+number of observations: 2000 
+number of estimated parameters: 7 
+residual degrees of freedom: 0 
+maximum log-likelihood: -3018.629 
+ 
+AIC(2): 6051.258
+BIC(2): 6090.465
+G^2(2): 1.484402e-07 (Likelihood ratio/deviance statistic) 
+X^2(2): 1.484293e-07 (Chi-square goodness of fit) 
+ 
+> print(modelo)          # Resumen del ajuste
+Conditional item response (column) probabilities,
+ by outcome variable, for each class (row) 
+ 
+$T1
+           Pr(1)  Pr(2)
+class 1:  0.9556 0.0444
+class 2:  0.1595 0.8405
+
+$T2
+           Pr(1)  Pr(2)
+class 1:  0.9140 0.0860
+class 2:  0.1396 0.8604
+
+$T3
+           Pr(1)  Pr(2)
+class 1:  0.8729 0.1271
+class 2:  0.2069 0.7931
+
+Estimated class population shares 
+ 0.6946 0.3054 
+ 
+Predicted class memberships (by modal posterior prob.) 
+ 0.704 0.296 
+ 
+========================================================= 
+Fit for 2 latent classes: 
+========================================================= 
+number of observations: 2000 
+number of estimated parameters: 7 
+residual degrees of freedom: 0 
+maximum log-likelihood: -3018.629 
+ 
+AIC(2): 6051.258
+BIC(2): 6090.465
+G^2(2): 1.484402e-07 (Likelihood ratio/deviance statistic) 
+X^2(2): 1.484293e-07 (Chi-square goodness of fit) 
+ 
+> modelo$P               # Prevalencias estimadas de cada clase latente
+[1] 0.6945967 0.3054033
+> modelo$probs           # Probabilidades por clase (de donde se leen Se y Sp)
+$T1
+              Pr(1)      Pr(2)
+class 1:  0.9556348 0.04436523
+class 2:  0.1595244 0.84047561
+
+$T2
+              Pr(1)      Pr(2)
+class 1:  0.9140043 0.08599565
+class 2:  0.1396043 0.86039566
+
+$T3
+              Pr(1)     Pr(2)
+class 1:  0.8729106 0.1270894
+class 2:  0.2068714 0.7931286
