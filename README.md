@@ -18,6 +18,8 @@ Un detalle a tener en cuenta es que los dos scripts bayesianos (A3 y A5) utiliza
 ## Estructura
 scripts/ contiene los códigos, numerados igual que en la memoria para facilitar su localización en el texto. Los cuatro primeros corresponden al capítulo 4 (software) y los cinco siguientes al apéndice.
 
+La carpeta scripts/resultados/ nos da la salida de consola de cada script. El script de simulación (A4) no aparece aquí porque su salida es la propia matriz simulada (Tabla 5.1), guardada en data/.
+
 En data/ encontramos las dos matrices de frecuencias que usan los modelos, la simulada de la Tabla 5.1 y la del cribado europeo de Alzheimer de la Tabla 5.3.
 
 ## Reproducibilidad
