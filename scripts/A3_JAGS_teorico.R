@@ -35,17 +35,17 @@ y <- matrix(c(384, 199,  70, 347,       # Poblacion 1
 N <- c(1000, 1000)      # Tamaño muestral de cada poblacion
 lista_datos <- list(y = y, N = N)     # Lista que recibe JAGS
 
-# Compilamos el modelo en JAGS inicializando 3 cadenas paralelas para control de convergencia
+# Compilamos el modelo con 3 cadenas para controlar la convergencia
 jags_modelo <- jags.model(
   file = textConnection(modelo_hui_walter),
   data = lista_datos,
   n.chains = 3
 )
 
-# Burn-in: descartamos 5,000 iteraciones iniciales para disipar el efecto de los valores semilla
+# Burn-in: descartamos las primeras 5000 iteraciones
 update(jags_modelo, 5000)
 
-# Simulamos 50,000 iteraciones para dibujar las distribuciones a posteriori de los parametros
+# 50000 iteraciones para muestrear la distribucion a posteriori
 muestras_post <- coda.samples(
   model = jags_modelo,
   variable.names = c("Se", "Sp", "p"),
