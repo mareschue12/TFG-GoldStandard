@@ -1,19 +1,18 @@
-#=============================================
 # MODELADO BAYESIANO DE HUI-WALTER SIN GOLD STANDARD
 # APLICADO AL CRIBADO DE LA ENFERMEDAD DE ALZHEIMER EN EUROPA
-#=============================================
+
 
 if (!requireNamespace("rjags", quietly = TRUE)) {
   install.packages("rjags")
 }
 library(rjags)
 
-# 1. Definicion de la matriz de datos reales (Tabla 2)
+# 1. Matriz de datos reales (Tabla 5.3)
 # Poblacion 1: Sur de Europa (p1 ~ 6.88%) 
 # Poblacion 2: Norte de Europa (p2 ~ 4.31%)
 y <- matrix(c(
-  112, 255, 148, 985,  # Poblacion 1: Sur de Europa
-  84,  258, 147, 1011  # Poblacion 2: Norte de Europa
+  112, 255, 148, 985,  
+  84,  258, 147, 1011  
 ), nrow = 2, byrow = TRUE)
 
 N <- c(1500, 1500)
@@ -44,7 +43,7 @@ model {
     prob[i, 4] <- p[i] * (1 - Se[1]) * (1 - Se[2]) + (1 - p[i]) * Sp[1] * Sp[2]
   }
   
-  # Distribuciones a priori no informativas Beta(1,1) para la precisión de los tests
+  # Prioris Beta(1,1) para la Se y la Sp de cada test
   # j = 1 representa al Test 1 (MMSE) 
   # j = 2 representa al Test 2 (CAMDEX)
   for (j in 1:2) {
@@ -55,7 +54,7 @@ model {
 "
 
 # 3. Inicializacion, compilacion del modelo y fase de adaptacion
-# Configuramos 3 cadenas independientes de Markov para monitorizar la convergencia
+# 3 cadenas independientes para vigilar la convergencia
 jags_compilado <- jags.model(
   file = textConnection(modelo_hw_alzheimer),
   data = lista_datos,
@@ -74,17 +73,17 @@ muestras_posteriori <- coda.samples(
   n.iter = 20000
 )
 
-# 6. Resumen numerico de la distribución posterior
+# 6. Resumen numerico de la distribución a posteriori
 summary(muestras_posteriori)
 
 # 7. Creamos las figuras 5.2 y 5.3
 
-# Figura 5.3: Modelo CORREGIDO 
+# Figura 5.3: Modelo corregido 
 pdf("fig_5_3_restringido.pdf", width = 9, height = 4)
 plot(muestras_posteriori[, "Se[1]"])
 dev.off()
 
-# Figura 5.2: Modelo SIN la restriccion T(0.5,1) 
+# Figura 5.2: Modelo sin la restriccion T(0.5,1) 
 modelo_hw_sin_restriccion <- "
 model {
   for (i in 1:2) {
