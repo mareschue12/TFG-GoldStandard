@@ -1,6 +1,6 @@
 library(OptimalCutpoints)
 
-set.seed(123) # Aseguramos la replicabilidad de la muestra simulada
+set.seed(123) # Semilla para que la muestra salga siempre igual
 
 n_sanos    <- 1000
 n_enfermos <- 1000
@@ -13,11 +13,11 @@ datos_clinicos <- data.frame(
   estado = factor(c(rep("Sano", 1000), rep("Enfermo", 1000)))
 )
 
-# Penalizacion asimetrica: un Falso Negativo es 10 veces mas grave que un Falso Positivo
+# Penalizacion asimetrica: Un falso negativo es 10 veces mas grave que un falso positivo
 coste_fp <- 1
 coste_fn <- 10
 
-# Optimizamos el corte minimizando el coste esperado de clasificacion (MCT)
+# Corte que minimiza el coste esperado (metodo MCT)
 punto_optimo <- optimal.cutpoints(
   X = "marcador", 
   status = "estado",
@@ -27,5 +27,5 @@ punto_optimo <- optimal.cutpoints(
   control = control.cutpoints(CFP = coste_fp, CFN = coste_fn)
 )
 
-summary(punto_optimo) # Tabla resumen con el umbral M y metricas resultantes
-plot(punto_optimo)    # Graficacion de la curva con la localizacion del corte optimo
+summary(punto_optimo)   # Tabla resumen con el umbral M y metricas resultantes
+plot(punto_optimo)      # Dibuja la curva con el corte marcado
