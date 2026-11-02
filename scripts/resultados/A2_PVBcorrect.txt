@@ -1,4 +1,4 @@
-> # Visualizamos la tabla de verificación (opcional, útil para el informe)
+> # Tabla de verificacion (util para el informe)
 > view_table(data = datos_pvb, test = "T", disease = "D",
 +            show_unverified = TRUE, show_total = TRUE)
      Disease
