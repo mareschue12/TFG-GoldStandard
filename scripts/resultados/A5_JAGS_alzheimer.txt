@@ -1,4 +1,4 @@
-> # 6. Resumen numerico de la distribución posterior
+> # 6. Resumen numerico de la distribución a posteriori
 > summary(muestras_posteriori)
 
 Iterations = 6001:26000
