@@ -1,6 +1,6 @@
 > auc(curva_roc)
 Area under the curve: 0.9432
-> # Buscamos el umbral óptimo (M) maximizando el índice de Youden
+> # Corte optimo por el indice de Youden
 > coords(curva_roc, x = "best", best.method = "youden",
 +        ret = c("threshold", "specificity", "sensitivity"))
   threshold specificity sensitivity
